@@ -1,6 +1,6 @@
+#include <BluetoothSerial.h>
+#include <FS.h>
 #include <M5EPD.h>
-#include "BluetoothSerial.h"
-#include "FS.h"
 
 M5EPD_Canvas canvas(&M5.EPD);
 BluetoothSerial SerialBT;
@@ -66,8 +66,23 @@ void setup() {
 
 
 void loop() {
-    if (SerialBT.available() > 0) {
+    if (SerialBT.available()) {
         String text = SerialBT.readString();
+        printText(text);
+
+        if (qc < 9) {
+            queue[qc] = text;
+            qc += 1;
+        } else {
+            for (int i = 0; i < 9; i++) {
+                queue[i] = queue[i+1];
+            }
+            queue[qc] = text;
+        }
+        qp = qc;
+    }
+    if (Serial.available()) {
+        String text = Serial.readString();
         printText(text);
 
         if (qc < 9) {
