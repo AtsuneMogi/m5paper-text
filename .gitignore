@@ -1,6 +1,6 @@
-.pio
-.vscode
-.venv
+.pio/*
+.vscode/*
+.venv/*
 /*.wav
 /*.py
 /*.txt
