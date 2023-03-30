@@ -10,7 +10,9 @@ ser = serial.Serial(
     port="/dev/ttyACM0",
     baudrate=115200
 )
-openai.api_key = "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"
+key = open("api-key.txt", 'r').read()
+print(key)
+openai.api_key = key[:-1]
 # Sampling frequency
 freq = 44100
 # Recording duration
