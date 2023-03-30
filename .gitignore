@@ -5,3 +5,6 @@
 .vscode/ipch
 .venv/*
 /*.wav
+speech2text.py
+api-key.txt
+
